@@ -7,8 +7,8 @@ class Config():
     @dataclass
     class EPISODE():
         FPS: int = 60
-        HEIGHT: int = 450
-        WIDTH: int = 930
+        HEIGHT: int = 200
+        WIDTH: int = 200
 
     # Missile Battery
     @dataclass
@@ -30,7 +30,7 @@ class Config():
         NUMBER: int = 19
         PROBA_IN: float = 0.005
         RADIUS: float = 4.0
-        SPEED: float = 5.0
+        SPEED: float = 1.0
 
     @dataclass
     class MISSILES():

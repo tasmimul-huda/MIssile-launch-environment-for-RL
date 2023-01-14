@@ -1,22 +1,36 @@
 
 from missile_env import MissileEnv
+import warnings
+import time
+from rl_q_brain import QLearningTable
 
-if __name__ == "__main__":
+warnings.filterwarnings('ignore')
 
-    # Create the environment
+        
+def update():
+    for episode in range(10000):
+        observation = env.reset()
+        
+        i = 0
+        
+        while True:
+            env.render()
+            action = RL.choose_action(str(observation))
+            
+            observation_, reward, done, _ = env.step(action)
+            
+            observation = observation_
+            
+            i += 1
+            
+            if done:
+                break
+        print(f"Episode: {episode}")
+        
+        print("Game Over")
+        
+        
+if __name__ == '__main__':
     env = MissileEnv()
-
-    # Reset Observation Space
-    observation = env.reset(seed=1997)
-
-    # While the episode is not finished
-    done = False
-    while not done:
-        # Select an action (here, a random one)
-        action = env.action_space.sample()
-
-        # One step forward
-        observation, reward, done, _ = env.step(action)
-
-        # Render (or not) the environment
-        env.render()
+    RL = QLearningTable(actions=list(range(env.NB_ACTIONS)))
+    update()
