@@ -61,9 +61,9 @@ def update():
                 agent.model.save(f'models/{Config.DQN_HYPERPARAMETER.MODEL_NAME}__{max_reward:_>7.2f}max_{average_reward:_>7.2f}avg_{min_reward:_>7.2f}min__{int(time.time())}.model')
 
         # Decay epsilon
-        if epsilon > Config.DQN_HYPERPARAMETER.MIN_EPSILON:
-            epsilon *= Config.DQN_HYPERPARAMETER.EPSILON_DECAY
-            epsilon = max(Config.DQN_HYPERPARAMETER.MIN_EPSILON, epsilon)
+        if Config.DQN_HYPERPARAMETER.epsilon > Config.DQN_HYPERPARAMETER.MIN_EPSILON:
+            Config.DQN_HYPERPARAMETER.epsilon *= Config.DQN_HYPERPARAMETER.EPSILON_DECAY
+            Config.DQN_HYPERPARAMETER.epsilon = max(Config.DQN_HYPERPARAMETER.MIN_EPSILON, Config.DQN_HYPERPARAMETER.epsilon)
         
         
         
