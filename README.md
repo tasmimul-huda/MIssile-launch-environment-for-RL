@@ -5,6 +5,8 @@
 `myenv\Scripts\activate`
 - **Run**
 `pip install -r requirements.txt`
-- **Run** 
+- **Run DQN agent** 
 `python main.py`
+- **Run Q-learning agent** 
+`python main_q.py`
 

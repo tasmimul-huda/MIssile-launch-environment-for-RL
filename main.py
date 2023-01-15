@@ -38,8 +38,8 @@ def update():
             # Transform new continous state to new discrete state and count reward
             episode_reward += reward
 
-            if Config.DQN_HYPERPARAMETER.SHOW_PREVIEW and not episode % Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:
-                env.render()
+            # if Config.DQN_HYPERPARAMETER.SHOW_PREVIEW and not episode % Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:
+            env.render()
 
             # Every step we update replay memory and train main network
             agent.update_replay_memory((current_state, action, reward, new_state, done))
