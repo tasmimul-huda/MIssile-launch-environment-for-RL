@@ -7,8 +7,8 @@ class Config():
     @dataclass
     class EPISODE():
         FPS: int = 60
-        HEIGHT: int = 200
-        WIDTH: int = 200
+        HEIGHT: int = 450
+        WIDTH: int = 930
 
     # Missile Battery
     @dataclass
@@ -57,3 +57,28 @@ class Config():
         SIZE: int = 12
         VX: int = 4
         VY: int = 4
+        
+    @dataclass
+    class DQN_HYPERPARAMETER():
+        
+        DISCOUNT: float = 0.90
+        REPLAY_MEMORY_SIZE: int = 80_000  # How many last steps to keep for model training
+        # Minimum number of steps in a memory to start training
+        MIN_REPLAY_MEMORY_SIZE: int = 2_000
+        MINIBATCH_SIZE: int = 32  # How many steps (samples) to use for training
+        UPDATE_TARGET_EVERY: int = 5  # Terminal states (end of episodes)
+        MODEL_NAME: str = 'vanila CNN'
+        MIN_REWARD: int = -6  # For model save
+        MEMORY_FRACTION: float = 0.20
+
+        EPISODES: int = 10_000
+
+        # Exploration settings
+        epsilon: int = 1  # not a constant, going to be decayed
+        EPSILON_DECAY :float = 0.99
+        MIN_EPSILON: float = 0.001
+
+        #  Stats settings
+        AGGREGATE_STATS_EVERY: float = 20  # episodes
+        SHOW_PREVIEW: bool = False
+
