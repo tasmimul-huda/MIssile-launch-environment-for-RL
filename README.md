@@ -10,3 +10,6 @@
 - **Run Q-learning agent** 
 `python main_q.py`
 
+### Environment
+
+
