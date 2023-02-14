@@ -47,18 +47,22 @@ def update():
 
             current_state = new_state
             step += 1
+            
+            if done:
+                print(f"episode: {episode}/{Config.DQN_HYPERPARAMETER.EPISODES + 1} score: {time}, epsilon: {Config.DQN_HYPERPARAMETER.epsilon}")
+                break
 
         # Append episode reward to a list and log stats (every given number of episodes)
         ep_rewards.append(episode_reward)
         
-        if not episode % Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY or episode == 1:
-            average_reward = sum(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])/len(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])
-            min_reward = min(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])
-            max_reward = max(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])
+        # if not episode % Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY or episode == 1:
+        #     average_reward = sum(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])/len(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])
+        #     min_reward = min(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])
+        #     max_reward = max(ep_rewards[-Config.DQN_HYPERPARAMETER.AGGREGATE_STATS_EVERY:])
         
-            # Save model, but only when min reward is greater or equal a set value
-            if min_reward >= Config.DQN_HYPERPARAMETER.MIN_REWARD:
-                agent.model.save(f'models/{Config.DQN_HYPERPARAMETER.MODEL_NAME}__{max_reward:_>7.2f}max_{average_reward:_>7.2f}avg_{min_reward:_>7.2f}min__{int(time.time())}.model')
+        #     # Save model, but only when min reward is greater or equal a set value
+        #     if min_reward >= Config.DQN_HYPERPARAMETER.MIN_REWARD:
+        #         agent.model.save(f'models/{Config.DQN_HYPERPARAMETER.MODEL_NAME}__{max_reward:_>7.2f}max_{average_reward:_>7.2f}avg_{min_reward:_>7.2f}min__{int(time.time())}.model')
 
         # Decay epsilon
         if Config.DQN_HYPERPARAMETER.epsilon > Config.DQN_HYPERPARAMETER.MIN_EPSILON:

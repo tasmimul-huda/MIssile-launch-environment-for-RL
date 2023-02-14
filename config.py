@@ -7,8 +7,8 @@ class Config():
     @dataclass
     class EPISODE():
         FPS: int = 60
-        HEIGHT: int = 450
-        WIDTH: int = 930
+        HEIGHT: int = 450#450
+        WIDTH: int = 930#930
 
     # Missile Battery
     @dataclass
@@ -49,7 +49,7 @@ class Config():
 
     @dataclass
     class REWARD():
-        DESTROYED_ENEMEY: float = 20.0
+        DESTROYED_ENEMEY: float = 1000.0
         MISSILE_LAUNCHED: float = -6.0
 
     @dataclass
@@ -68,10 +68,10 @@ class Config():
         MINIBATCH_SIZE: int = 32  # How many steps (samples) to use for training
         UPDATE_TARGET_EVERY: int = 5  # Terminal states (end of episodes)
         MODEL_NAME: str = 'vanila CNN'
-        MIN_REWARD: int = -6  # For model save
+        MIN_REWARD: int = -200  # For model save
         MEMORY_FRACTION: float = 0.20
 
-        EPISODES: int = 10_000
+        EPISODES: int = 3
 
         # Exploration settings
         epsilon: int = 1  # not a constant, going to be decayed
@@ -79,6 +79,6 @@ class Config():
         MIN_EPSILON: float = 0.001
 
         #  Stats settings
-        AGGREGATE_STATS_EVERY: float = 20  # episodes
-        SHOW_PREVIEW: bool = False
+        AGGREGATE_STATS_EVERY: float = 50  # episodes
+        SHOW_PREVIEW: bool = True
 
